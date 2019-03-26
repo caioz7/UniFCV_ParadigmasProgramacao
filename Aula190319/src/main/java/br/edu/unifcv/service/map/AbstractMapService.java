@@ -5,13 +5,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 import java.util.Set;
 
 import br.edu.unifcv.model.BaseEntity;
+import br.edu.unifcv.model.Professor;
 
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-	private Map<Long, T> map = new HashMap<>();
+	protected Map<Long, T> map = new HashMap<>();
 
 	public Set<T> findAll() {
 		return new HashSet<>(map.values());
@@ -30,12 +32,10 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 	}
 
 	T save(T object) {
-
 		if (object != null) {
 			if (object.getId() == null) {
 				object.setId(getNextId());
 			}
-
 			map.put(object.getId(), object);
 		} else {
 			throw new RuntimeException("Objeto não pode ser nulo!!!!");

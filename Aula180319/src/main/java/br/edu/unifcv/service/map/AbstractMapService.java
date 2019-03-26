@@ -11,7 +11,7 @@ import br.edu.unifcv.model.BaseEntity;
 
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-	private Map<Long, T> map = new HashMap<>();
+	protected Map<Long, T> map = new HashMap<>();
 
 	public Set<T> findAll() {
 		return new HashSet<>(map.values());
@@ -30,12 +30,10 @@ public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> 
 	}
 
 	T save(T object) {
-
 		if (object != null) {
 			if (object.getId() == null) {
 				object.setId(getNextId());
 			}
-
 			map.put(object.getId(), object);
 		} else {
 			throw new RuntimeException("Objeto não pode ser nulo!!!!");
