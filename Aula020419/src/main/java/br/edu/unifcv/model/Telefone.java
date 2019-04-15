@@ -5,6 +5,17 @@ public class Telefone extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 
 	private Long professor_id;
+	private Long aluno_;
+	
+	
+	public Long getAluno_() {
+		return aluno_;
+	}
+
+	public void setAluno_(Long aluno_) {
+		this.aluno_ = aluno_;
+	}
+
 	private String contato;
 	private String telefone;
 
